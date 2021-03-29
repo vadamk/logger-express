@@ -5,8 +5,6 @@ const cors = require('cors')
 
 const dbUrl = 'mongodb+srv://admin:admin@cluster0.uulqf.mongodb.net/common?retryWrites=true&w=majority'
 
-console.log('process.env: ', process.env);
-
 const PORT = process.env.PORT || 3000
 const ORIGIN = process.env.ORIGIN || 'https://gomonday.se'
 
