@@ -7,10 +7,6 @@ module.exports = {
         PORT: "3000",
         ORIGIN: "https://gomonday.se",
       },
-      env_production: {
-        PORT: "3000",
-        ORIGIN: "http://localhost:3005",
-      }
     },
   ],
 };
