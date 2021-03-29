@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000
 const ORIGIN = process.env.ORIGIN || 'https://gomonday.se'
 
 const recordScheme = new mongoose.Schema({
-  name: String,
   startTime: Number,
   value: String,
   label: String,
@@ -42,7 +41,6 @@ app.post('/logger', (req, res) => {
   if(!req.body) return res.sendStatus(400);
 
   const {
-    name,
     startTime,
     value,
     label,
@@ -50,7 +48,6 @@ app.post('/logger', (req, res) => {
   } = req.body
 
   const newRecord = new Record({
-    name,
     startTime,
     value,
     label,
