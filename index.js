@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors')
+const dayjs = require('dayjs')
 
 const dbUrl = 'mongodb+srv://admin:admin@cluster0.uulqf.mongodb.net/common?retryWrites=true&w=majority'
 
@@ -50,7 +51,21 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get('/logger', (req, res) => {
-  Record.find({}, function(err, users){
+
+  let dbQuery = {}
+  const { unit, num = 1 } = req.query
+  
+  if (unit) {
+    dbQuery = {
+      ...dbQuery,
+      startTime: {
+        $gte: dayjs().subtract(num, unit),
+        $lt: dayjs()
+      }
+    }
+  }
+
+  Record.find({ ...dbQuery }, function(err, users){
   if(err) return console.log(err);
     res.send(users)
   });
