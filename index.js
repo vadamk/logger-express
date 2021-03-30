@@ -18,7 +18,7 @@ const Record = mongoose.model('Record', recordScheme);
 
 const app = express();
 
-app.use(cors({ origin: '*', credentials: false }))
+app.use(cors())
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
