@@ -6,7 +6,6 @@ const cors = require('cors')
 const dbUrl = 'mongodb+srv://admin:admin@cluster0.uulqf.mongodb.net/common?retryWrites=true&w=majority'
 
 const PORT = process.env.PORT || 3000
-const ORIGIN = process.env.ORIGIN || 'https://gomonday.se'
 
 const recordScheme = new mongoose.Schema({
   startTime: Number,
@@ -19,7 +18,7 @@ const Record = mongoose.model('Record', recordScheme);
 
 const app = express();
 
-app.use(cors({ origin: ORIGIN, credentials: true }))
+app.use(cors({ origin: '*', credentials: false }))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
